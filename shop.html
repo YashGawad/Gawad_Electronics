@@ -125,6 +125,17 @@
     <div id="ordersList" class="space-y-4"></div>
   </section>
 
+  <section id="contact" class="py-16 px-4 md:px-16">
+    <h2 class="text-3xl pixel-title text-center mb-8">Contact Us</h2>
+    <form action="https://formsubmit.co/223yash2014@sjcem.edu.in" method="POST" class="max-w-xl mx-auto bg-[#1a1a2e] p-8 rounded-lg pixel-border flex flex-col gap-6">
+      <input type="text" name="name" placeholder="Your Name" class="input input-bordered bg-[#0f172a] text-white" required />
+      <input type="email" name="email" placeholder="Your Email" class="input input-bordered bg-[#0f172a] text-white" required />
+      <textarea name="message" placeholder="Your Message" class="textarea textarea-bordered bg-[#0f172a] text-white" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit" class="pixel-btn px-6 py-3 rounded">Send Message</button>
+    </form>
+  </section>
+
   <footer class="footer p-10 bg-[#1a1a2e] text-gray-400 mt-10">
     <nav>
       <h6 class="footer-title pixel-title">Gawad Electronics</h6>
@@ -148,14 +159,6 @@
       <div id="buyThankYou" class="hidden text-center mt-4 text-green-400 font-bold">Thank you for your purchase!</div>
     </div>
   </div>
-
-  <form action="https://formsubmit.co/223yash2014@sjcem.edu.in" method="POST" class="max-w-xl mx-auto bg-white/80 p-8 rounded-lg pixel-border flex flex-col gap-6">
-      <input type="text" name="name" placeholder="Your Name" class="input input-bordered" required />
-      <input type="email" name="email" placeholder="Your Email" class="input input-bordered" required />
-      <textarea name="message" placeholder="Your Message" class="textarea textarea-bordered" required></textarea>
-      <input type="hidden" name="_captcha" value="false">
-      <button type="submit" class="pixel-btn px-6 py-3 rounded">Send Message</button>
-    </form>
 
   <script src="js/main.js"></script>
   <script>
