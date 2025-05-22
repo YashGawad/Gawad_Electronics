@@ -9,32 +9,17 @@
   <link rel="icon" href="favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.0/dist/full.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    .pixel-border {
-      border: 4px solid #00e0ff;
-      box-shadow: 0 0 0 4px #2d2dff, 0 0 20px #00e0ff;
-      border-radius: 0.5rem;
-    }
-
-    .pixel-title {
-      font-family: 'Press Start 2P', cursive;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 0 #00e0ff, 4px 4px 0 #3333ff;
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-[#1a1a2e] text-white font-sans">
-  <header class="navbar bg-[#001a33] shadow px-4 sticky top-0 z-50 pixel-border flex flex-wrap items-center justify-between">
+<body class="pixel-bg">
+  <header class="navbar pixel-border flex flex-wrap items-center justify-between">
     <div class="flex-1 flex items-center gap-3 min-w-0">
       <img src="assets/Logo.avif" alt="Logo" class="w-10 h-10 mr-2" />
       <a href="index.html" class="text-2xl font-extrabold tracking-wide pixel-title whitespace-nowrap">Gawad Electronics</a>
     </div>
-    <form id="header-search-form" class="flex items-center gap-2 order-3 md:order-none w-full md:w-auto mt-2 md:mt-0 md:ml-4" style="min-width:200px;" onsubmit="return false;">
-      <input id="header-search-input" type="text" class="input input-bordered bg-[#0f172a] text-white w-full md:w-40 lg:w-64" placeholder="Search products..." />
+    <form id="header-search-form" class="flex items-center gap-2 order-3 md:order-none w-full md:w-auto mt-2 md:mt-0 md:ml-4">
+      <input id="header-search-input" type="text" class="input input-bordered w-full md:w-40 lg:w-64" placeholder="Search products..." />
       <button type="submit" class="btn btn-accent">Search</button>
     </form>
     <!-- Desktop Nav -->
@@ -46,32 +31,25 @@
         <li><a href="#laptops">Laptops</a></li>
         <li><a href="#tvs">TVs</a></li>
       </ul>
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
-          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
-          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
-        </ul>
-      </div>
+      <button id="theme-toggle" class="pixel-btn px-4 py-2 rounded ml-2">🌙 Theme</button>
     </div>
     <!-- Mobile Nav -->
     <div class="flex-none md:hidden order-2">
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="#mobiles">Mobiles</a></li>
-          <li><a href="#laptops">Laptops</a></li>
-          <li><a href="#tvs">TVs</a></li>
-          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
-          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
-        </ul>
-      </div>
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="#mobiles">Mobiles</a></li>
+        <li><a href="#laptops">Laptops</a></li>
+        <li><a href="#tvs">TVs</a></li>
+        <li><a href="#orders" id="ordersBtn">My Orders</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        <li><button id="theme-toggle-mobile" class="pixel-btn px-4 py-2 rounded w-full mt-2">🌙 Theme</button></li>
+      </ul>
     </div>
   </header>
 
-  <section class="hero min-h-[40vh] bg-gradient-to-br from-[#00e0ff] via-[#7c2ae8] to-[#2d2dff] text-white">
+  <section class="hero min-h-[40vh] pixel-card">
     <div class="hero-content text-center">
       <div class="max-w-xl">
         <h1 class="text-5xl font-bold pixel-title mb-2">Shop Electronics</h1>
@@ -81,39 +59,39 @@
   </section>
 
   <!-- Mobiles Section -->
-  <section id="mobiles" class="p-6">
+  <section id="mobiles" class="p-6 pixel-card">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
       <h2 class="text-3xl font-semibold pixel-title">Mobiles</h2>
-      <input id="mobiles-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search Mobiles..." />
+      <input id="mobiles-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search Mobiles..." />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="mobiles-list">
       <!-- Mobiles will be rendered here -->
     </div>
-    <button id="mobiles-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+    <button id="mobiles-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
   </section>
 
   <!-- Laptops Section -->
-  <section id="laptops" class="p-6">
+  <section id="laptops" class="p-6 pixel-card">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
       <h2 class="text-3xl font-semibold pixel-title">Laptops</h2>
-      <input id="laptops-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search Laptops..." />
+      <input id="laptops-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search Laptops..." />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="laptops-list">
       <!-- Laptops will be rendered here -->
     </div>
-    <button id="laptops-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+    <button id="laptops-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
   </section>
 
   <!-- TVs Section -->
-  <section id="tvs" class="p-6">
+  <section id="tvs" class="p-6 pixel-card">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
       <h2 class="text-3xl font-semibold pixel-title">TVs</h2>
-      <input id="tvs-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search TVs..." />
+      <input id="tvs-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search TVs..." />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="tvs-list">
       <!-- TVs will be rendered here -->
     </div>
-    <button id="tvs-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+    <button id="tvs-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
   </section>
 
   <aside id="cart" class="fixed right-0 top-0 w-80 h-full bg-[#0f3460] text-white border-l border-blue-300 shadow-lg p-4 hidden z-50 overflow-y-auto">
@@ -231,14 +209,16 @@
         return;
       }
       container.innerHTML = products.map(item => `
-        <div class="card bg-[#16213e] shadow-lg hover:scale-105 transition-transform">
-          <figure><img src="${item.img}" alt="${item.name}" class="h-48 w-full object-contain" /></figure>
-          <div class="card-body">
+        <div class="pixel-product-box pixel-border shadow-lg hover:scale-105 transition-transform flex flex-col justify-between">
+          <figure><img src="${item.img}" alt="${item.name}" /></figure>
+          <div class="card-body w-full flex flex-col items-center justify-end gap-2">
             <h3 class="card-title text-lg">${item.name}</h3>
             <p class="text-[#00e0ff]">₹${item.price.toLocaleString()}</p>
             <p class="text-xs text-gray-300 mb-2">${item.desc}</p>
-            <button class="btn btn-accent w-full" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})">Add to Cart</button>
-            <button class="btn btn-primary w-full mt-2" onclick="openBuyModal('${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Now</button>
+            <div class="w-full flex flex-col gap-2 mt-2">
+              <button class="btn btn-accent w-full" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})">Add to Cart</button>
+              <button class="btn btn-primary w-full" onclick="openBuyModal('${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Now</button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -531,64 +511,33 @@
         cartAside.appendChild(btn);
       }
 
-      // Header search bar logic (improved fuzzy match like home page)
-      const headerSearchForm = document.getElementById('header-search-form');
-      const headerSearchInput = document.getElementById('header-search-input');
-      // Product keywords for fuzzy search
-      const productKeywords = [
-        {keywords: ['mobile', 'mobiles', 'moblies', 'phone', 'phones', 'cell', 'cellphone'], section: 'mobiles'},
-        {keywords: ['laptop', 'laptops', 'labtop', 'notebook', 'notebooks', 'computer'], section: 'laptops'},
-        {keywords: ['tv', 'tvs', 'televsion', 'television', 'smart tv', 'smarttv'], section: 'tvs'}
-      ];
-      if (headerSearchForm && headerSearchInput) {
-        headerSearchForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const query = headerSearchInput.value.trim().toLowerCase();
-          if (!query) return;
-          // Fuzzy match for section keywords
-          let matchedSection = '';
-          for (const cat of productKeywords) {
-            if (cat.keywords.some(function(k){ return query.includes(k) || k.includes(query); })) {
-              matchedSection = cat.section;
-              break;
-            }
-          }
-          if (matchedSection) {
-            document.getElementById(matchedSection).scrollIntoView({behavior:'smooth'});
-            return;
-          }
-          // Try to match in all products
-          let found = null;
-          let section = '';
-          let idx = -1;
-          [
-            {list: mobiles, section: 'mobiles'},
-            {list: laptops, section: 'laptops'},
-            {list: tvs, section: 'tvs'}
-          ].some(cat => {
-            idx = cat.list.findIndex(item => item.name.toLowerCase().includes(query));
-            if (idx !== -1) {
-              found = cat.list[idx];
-              section = cat.section;
-              return true;
-            }
-            return false;
-          });
-          if (found) {
-            document.getElementById(section).scrollIntoView({behavior:'smooth'});
-            const sectionSearch = document.getElementById(section+'-search');
-            if (sectionSearch) {
-              sectionSearch.value = query;
-              sectionSearch.dispatchEvent(new Event('input'));
-            }
-          } else {
-            alert('No matching product found!');
-          }
-        });
-      }
-
       renderOrders();
       renderCart();
+    });
+    // THEME TOGGLE LOGIC (ensure only one DOMContentLoaded for theme)
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const desktopBtn = document.getElementById('theme-toggle');
+      if (desktopBtn) desktopBtn.textContent = theme === 'dark' ? '☀️ Theme' : '🌙 Theme';
+      const mobileBtn = document.getElementById('theme-toggle-mobile');
+      if (mobileBtn) mobileBtn.textContent = theme === 'dark' ? '☀️ Theme' : '🌙 Theme';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load theme from local storage or default to light
+      const theme = localStorage.getItem('theme') || 'light';
+      setTheme(theme);
+
+      // Theme toggle event listeners
+      document.getElementById('theme-toggle').addEventListener('click', function() {
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
+      document.getElementById('theme-toggle-mobile').addEventListener('click', function() {
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
     });
   </script>
 </body>
