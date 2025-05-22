@@ -177,10 +177,11 @@
   <!-- CONTACT SECTION -->
   <section id="contact" class="py-16 px-4 md:px-16">
     <h2 class="text-3xl pixel-title text-center mb-8">Contact Us</h2>
-    <form class="max-w-xl mx-auto bg-[#1a1a2e] p-8 rounded-lg pixel-border flex flex-col gap-6">
-      <input type="text" placeholder="Your Name" class="input input-bordered bg-[#0f172a] text-white" required />
-      <input type="email" placeholder="Your Email" class="input input-bordered bg-[#0f172a] text-white" required />
-      <textarea placeholder="Your Message" class="textarea textarea-bordered bg-[#0f172a] text-white" required></textarea>
+    <form action="https://formsubmit.co/223yash2014@sjcem.edu.in" method="POST" class="max-w-xl mx-auto bg-[#1a1a2e] p-8 rounded-lg pixel-border flex flex-col gap-6">
+      <input type="text" name="name" placeholder="Your Name" class="input input-bordered bg-[#0f172a] text-white" required />
+      <input type="email" name="email" placeholder="Your Email" class="input input-bordered bg-[#0f172a] text-white" required />
+      <textarea name="message" placeholder="Your Message" class="textarea textarea-bordered bg-[#0f172a] text-white" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
       <button type="submit" class="pixel-btn px-6 py-3 rounded">Send Message</button>
     </form>
   </section>
@@ -215,7 +216,6 @@
   </footer>
 
   <script>
-    // Scroll to top button logic
     const scrollBtn = document.getElementById('scrollToTop');
     window.addEventListener('scroll', () => {
       scrollBtn.classList.toggle('hidden', window.scrollY < 200);
@@ -223,16 +223,6 @@
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    // Contact form (demo only)
-    // Only attach to contact form, not header search form
-    const contactForm = document.querySelector('section#contact form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for reaching out! We will get back to you soon.');
-        this.reset();
-      });
-    }
     document.addEventListener('DOMContentLoaded', function() {
       // Header search bar logic
       const headerSearchForm = document.getElementById('header-search-form');
