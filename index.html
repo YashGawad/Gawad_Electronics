@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gawad Electronics | Electronics Superstore</title>
+  <link rel="icon" href="favicon.ico" />
+  <meta name="description" content="Gawad Electronics - Your one-stop shop for the latest mobiles, laptops, and TVs." />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .pixel-border {
+      border: 4px solid #00e0ff;
+      box-shadow: 0 0 0 4px #2d2dff, 0 0 20px #00e0ff;
+      border-radius: 0.5rem;
+    }
+
+    .pixel-btn {
+      font-family: 'Press Start 2P', cursive;
+      background: linear-gradient(90deg, #00e0ff 0%, #3333ff 100%);
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px #00e0ff99;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pixel-btn:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0 4px 16px #3333ff99;
+    }
+
+    .pixel-title {
+      font-family: 'Press Start 2P', cursive;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #00e0ff, 4px 4px 0 #3333ff;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#001a33] via-[#0f172a] to-[#2d2dff] min-h-screen text-white">
+  <!-- NAVBAR -->
+  <header class="navbar bg-[#001a33] shadow px-4 sticky top-0 z-50 pixel-border flex flex-wrap items-center justify-between">
+    <div class="flex-1 flex items-center gap-3 min-w-0">
+      <img src="assets/Logo.avif" alt="Logo" class="w-10 h-10 mr-2" />
+      <a href="index.html" class="text-2xl font-extrabold tracking-wide pixel-title whitespace-nowrap">Gawad Electronics</a>
+    </div>
+    <form id="header-search-form" class="flex items-center gap-2 order-3 md:order-none w-full md:w-auto mt-2 md:mt-0 md:ml-4"
+      style="min-width:200px;" onsubmit="return false;">
+      <input id="header-search-input" type="text" class="input input-bordered bg-[#0f172a] text-white w-full md:w-40 lg:w-64"
+        placeholder="Search products..." />
+      <button type="submit" class="btn btn-accent">Search</button>
+    </form>
+    <!-- Desktop Nav -->
+    <div class="flex-none hidden md:flex items-center gap-2">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="#mobiles">Mobiles</a></li>
+        <li><a href="#laptops">Laptops</a></li>
+        <li><a href="#tvs">TVs</a></li>
+      </ul>
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
+          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Mobile Nav -->
+    <div class="flex-none md:hidden order-2">
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#mobiles">Mobiles</a></li>
+          <li><a href="#laptops">Laptops</a></li>
+          <li><a href="#tvs">TVs</a></li>
+          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="flex flex-col md:flex-row items-center justify-between gap-10 px-8 py-20 bg-gradient-to-r from-[#00e0ff] via-[#7c2ae8] to-[#2d2dff] pixel-border mt-8 mx-4">
+    <div class="flex-1 text-center md:text-left">
+      <h1 class="text-5xl md:text-6xl font-extrabold pixel-title mb-6">Upgrade Your Tech!</h1>
+      <p class="text-xl mb-8 max-w-lg">Welcome to <span class="text-[#00e0ff] font-bold">Gawad Electronics</span> — your destination for the latest mobiles, powerful laptops, and stunning TVs. Shop the best in electronics, all in one place!</p>
+      <a href="shop.html" class="pixel-btn px-8 py-4 text-lg rounded">🛒 Shop Electronics</a>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <img src="assets/Electronics.avif" alt="Electronics Showcase" class="w-80 h-80 object-contain pixel-border bg-[#0f172a]" />
+    </div>
+  </section>
+
+  <!-- MOBILES SECTION -->
+  <section id="mobiles" class="py-16 px-4 md:px-16">
+    <h2 class="text-4xl pixel-title text-center mb-12">Latest Mobiles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-items-center">
+      <a href="shop.html#mobiles" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Samsung-Galaxy-S25-Ultra-1-1.webp" alt="Samsung Galaxy S25 Ultra" class="mx-auto mb-4 w-20 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Samsung Galaxy S25 Ultra</h3>
+      </a>
+      <a href="shop.html#mobiles" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Google-Pixel-9-Pro-XL-2.webp" alt="Google Pixel 9 Pro XL" class="mx-auto mb-4 w-20 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Google Pixel 9 Pro XL</h3>
+      </a>
+      <a href="shop.html#mobiles" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/OnePlus-13-5.webp" alt="OnePlus 13" class="mx-auto mb-4 w-20 h-20" />
+        <h3 class="text-2xl font-bold mb-2">OnePlus 13</h3>
+      </a>
+    </div>
+    <div class="flex justify-center mt-8">
+      <a href="shop.html#mobiles" class="pixel-btn px-8 py-3 rounded text-lg">View All Mobiles</a>
+    </div>
+  </section>
+
+  <!-- LAPTOPS SECTION -->
+  <section id="laptops" class="py-16 px-4 md:px-16 bg-gradient-to-r from-[#2d2dff] via-[#7c2ae8] to-[#00e0ff] pixel-border mx-4 my-8">
+    <h2 class="text-4xl pixel-title text-center mb-12">Top Laptops</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-items-center">
+      <a href="shop.html#laptops" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Apple MacBook Air 13-inch (M4).webp" alt="Apple MacBook Air 13&quot; (M4)" class="mx-auto mb-4 w-24 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Apple MacBook Air 13" (M4)</h3>
+      </a>
+      <a href="shop.html#laptops" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Dell XPS 13 (9350, Intel Core Ultra 2nd Gen).webp" alt="Dell XPS 13 (9350, Intel Core Ultra 2nd Gen)" class="mx-auto mb-4 w-24 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Dell XPS 13 (9350, Intel Core Ultra 2nd Gen)</h3>
+      </a>
+      <a href="shop.html#laptops" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/MacBook Pro 16-inch (M4 Pro).webp" alt="MacBook Pro 16&quot; (M4 Pro)" class="mx-auto mb-4 w-24 h-20" />
+        <h3 class="text-2xl font-bold mb-2">MacBook Pro 16" (M4 Pro)</h3>
+      </a>
+    </div>
+    <div class="flex justify-center mt-8">
+      <a href="shop.html#laptops" class="pixel-btn px-8 py-3 rounded text-lg">View All Laptops</a>
+    </div>
+  </section>
+
+  <!-- TV SECTION -->
+  <section id="tvs" class="py-16 px-4 md:px-16">
+    <h2 class="text-4xl pixel-title text-center mb-12">Smart TVs</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-items-center">
+      <a href="shop.html#tvs" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Samsung 125 cm (50 inches) 4K Ultra HD Smart Neo QLED TV.avif" alt="Samsung 50'' Neo QLED 4K" class="mx-auto mb-4 w-28 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Samsung 50" Neo QLED 4K</h3>
+      </a>
+      <a href="shop.html#tvs" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Sony 164 cm (65 inches) BRAVIA 2 4K Ultra HD Smart LED Google TV.avif" alt="Sony 65'' Bravia 2 4K" class="mx-auto mb-4 w-28 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Sony 65" Bravia 2 4K</h3>
+      </a>
+      <a href="shop.html#tvs" class="block bg-[#1a1a2e] p-8 rounded-lg pixel-border text-center hover:scale-105 transition-transform cursor-pointer">
+        <img src="images/Xiaomi 125 cm (50 inches) X Pro 4K Dolby Vision IQ Series Smart Google TV.avif" alt="Xiaomi 50'' X Pro 4K" class="mx-auto mb-4 w-28 h-20" />
+        <h3 class="text-2xl font-bold mb-2">Xiaomi 50" X Pro 4K</h3>
+      </a>
+    </div>
+    <div class="flex justify-center mt-8">
+      <a href="shop.html#tvs" class="pixel-btn px-8 py-3 rounded text-lg">View All TVs</a>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-16 px-4 md:px-16 bg-gradient-to-r from-[#2d2dff] via-[#7c2ae8] to-[#00e0ff] pixel-border mx-4 my-8">
+    <h2 class="text-3xl pixel-title text-center mb-8">About Gawad Electronics</h2>
+    <div class="max-w-3xl mx-auto text-center text-lg">
+      <p>Gawad Electronics is your trusted electronics superstore, offering the latest and greatest in mobiles, laptops, and TVs. Our mission is to make cutting-edge technology accessible, affordable, and fun for everyone. Shop with confidence and experience the future today!</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-16 px-4 md:px-16">
+    <h2 class="text-3xl pixel-title text-center mb-8">Contact Us</h2>
+    <form class="max-w-xl mx-auto bg-[#1a1a2e] p-8 rounded-lg pixel-border flex flex-col gap-6">
+      <input type="text" placeholder="Your Name" class="input input-bordered bg-[#0f172a] text-white" required />
+      <input type="email" placeholder="Your Email" class="input input-bordered bg-[#0f172a] text-white" required />
+      <textarea placeholder="Your Message" class="textarea textarea-bordered bg-[#0f172a] text-white" required></textarea>
+      <button type="submit" class="pixel-btn px-6 py-3 rounded">Send Message</button>
+    </form>
+  </section>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollToTop" class="fixed bottom-5 right-5 pixel-btn btn-circle text-2xl hidden">⬆️</button>
+
+  <!-- FOOTER -->
+  <footer class="footer p-10 bg-[#001a33] text-gray-300 mt-8 pixel-border">
+    <div>
+      <h6 class="footer-title pixel-title">Gawad Electronics</h6>
+      <p>Made with <span class="text-[#00e0ff]">&#10084;&#65039;</span> by Yash Gawad</p>
+    </div>
+    <nav>
+      <h6 class="footer-title">Quick Links</h6>
+      <a class="link link-hover" href="#mobiles">Mobiles</a>
+      <a class="link link-hover" href="#laptops">Laptops</a>
+      <a class="link link-hover" href="#tvs">TVs</a>
+      <a class="link link-hover" href="#about">About</a>
+      <a class="link link-hover" href="#contact">Contact</a>
+      <a class="link link-hover" href="#">Privacy Policy</a>
+      <a class="link link-hover" href="#">Terms of Use</a>
+    </nav>
+    <div>
+      <h6 class="footer-title">Follow Us</h6>
+      <div class="flex gap-4 mt-2">
+        <a href="#" class="hover:text-[#00e0ff]">Instagram</a>
+        <a href="#" class="hover:text-[#00e0ff]">Twitter</a>
+        <a href="#" class="hover:text-[#00e0ff]">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll to top button logic
+    const scrollBtn = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('hidden', window.scrollY < 200);
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    // Contact form (demo only)
+    // Only attach to contact form, not header search form
+    const contactForm = document.querySelector('section#contact form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for reaching out! We will get back to you soon.');
+        this.reset();
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header search bar logic
+      const headerSearchForm = document.getElementById('header-search-form');
+      const headerSearchInput = document.getElementById('header-search-input');
+      // Product keywords for fuzzy search
+      const productKeywords = [
+        {keywords: ['mobile', 'mobiles', 'moblies', 'phone', 'phones', 'cell', 'cellphone'], section: 'mobiles'},
+        {keywords: ['laptop', 'laptops', 'labtop', 'notebook', 'notebooks', 'computer'], section: 'laptops'},
+        {keywords: ['tv', 'tvs', 'televsion', 'television', 'smart tv', 'smarttv'], section: 'tvs'}
+      ];
+      if (headerSearchForm && headerSearchInput) {
+        headerSearchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const query = headerSearchInput.value.trim().toLowerCase();
+          if (!query) return;
+          // Fuzzy match for section keywords
+          let matchedSection = '';
+          for (const cat of productKeywords) {
+            if (cat.keywords.some(function(k){ return query.includes(k) || k.includes(query); })) {
+              matchedSection = cat.section;
+              break;
+            }
+          }
+          if (matchedSection) {
+            document.getElementById(matchedSection).scrollIntoView({behavior:'smooth'});
+            return;
+          }
+          alert('No matching product or section found!');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

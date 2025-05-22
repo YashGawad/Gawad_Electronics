@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gawad Electronics | Electronics Shop</title>
+  <meta name="description" content="Shop the latest mobiles, laptops, and TVs at Gawad Electronics!" />
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .pixel-border {
+      border: 4px solid #00e0ff;
+      box-shadow: 0 0 0 4px #2d2dff, 0 0 20px #00e0ff;
+      border-radius: 0.5rem;
+    }
+
+    .pixel-title {
+      font-family: 'Press Start 2P', cursive;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #00e0ff, 4px 4px 0 #3333ff;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  </style>
+</head>
+
+<body class="bg-[#1a1a2e] text-white font-sans">
+  <header class="navbar bg-[#001a33] shadow px-4 sticky top-0 z-50 pixel-border flex flex-wrap items-center justify-between">
+    <div class="flex-1 flex items-center gap-3 min-w-0">
+      <img src="assets/Logo.avif" alt="Logo" class="w-10 h-10 mr-2" />
+      <a href="index.html" class="text-2xl font-extrabold tracking-wide pixel-title whitespace-nowrap">Gawad Electronics</a>
+    </div>
+    <form id="header-search-form" class="flex items-center gap-2 order-3 md:order-none w-full md:w-auto mt-2 md:mt-0 md:ml-4" style="min-width:200px;" onsubmit="return false;">
+      <input id="header-search-input" type="text" class="input input-bordered bg-[#0f172a] text-white w-full md:w-40 lg:w-64" placeholder="Search products..." />
+      <button type="submit" class="btn btn-accent">Search</button>
+    </form>
+    <!-- Desktop Nav -->
+    <div class="flex-none hidden md:flex items-center gap-2">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="#mobiles">Mobiles</a></li>
+        <li><a href="#laptops">Laptops</a></li>
+        <li><a href="#tvs">TVs</a></li>
+      </ul>
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
+          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Mobile Nav -->
+    <div class="flex-none md:hidden order-2">
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-accent btn-circle m-1 text-xl">☰</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-[#1a1a2e] rounded-box w-56 mt-2">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#mobiles">Mobiles</a></li>
+          <li><a href="#laptops">Laptops</a></li>
+          <li><a href="#tvs">TVs</a></li>
+          <li><a href="#orders" id="ordersBtn">My Orders</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero min-h-[40vh] bg-gradient-to-br from-[#00e0ff] via-[#7c2ae8] to-[#2d2dff] text-white">
+    <div class="hero-content text-center">
+      <div class="max-w-xl">
+        <h1 class="text-5xl font-bold pixel-title mb-2">Shop Electronics</h1>
+        <p class="py-4 text-lg">Discover the latest mobiles, laptops, and TVs at unbeatable prices. Upgrade your tech with Gawad Electronics!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobiles Section -->
+  <section id="mobiles" class="p-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+      <h2 class="text-3xl font-semibold pixel-title">Mobiles</h2>
+      <input id="mobiles-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search Mobiles..." />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="mobiles-list">
+      <!-- Mobiles will be rendered here -->
+    </div>
+    <button id="mobiles-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+  </section>
+
+  <!-- Laptops Section -->
+  <section id="laptops" class="p-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+      <h2 class="text-3xl font-semibold pixel-title">Laptops</h2>
+      <input id="laptops-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search Laptops..." />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="laptops-list">
+      <!-- Laptops will be rendered here -->
+    </div>
+    <button id="laptops-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+  </section>
+
+  <!-- TVs Section -->
+  <section id="tvs" class="p-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+      <h2 class="text-3xl font-semibold pixel-title">TVs</h2>
+      <input id="tvs-search" type="text" class="input input-bordered w-full sm:w-64 bg-[#0f172a] text-white" placeholder="Search TVs..." />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="tvs-list">
+      <!-- TVs will be rendered here -->
+    </div>
+    <button id="tvs-toggle" class="btn btn-outline btn-info mt-4">Show All</button>
+  </section>
+
+  <aside id="cart" class="fixed right-0 top-0 w-80 h-full bg-[#0f3460] text-white border-l border-blue-300 shadow-lg p-4 hidden z-50 overflow-y-auto">
+    <h3 class="text-xl font-bold mb-4">🛒 Your Cart</h3>
+    <ul id="cart-items" class="space-y-2"></ul>
+    <p class="font-semibold mt-4">Total: Rs. <span id="cart-total">0</span></p>
+    <button class="btn btn-success mt-2" onclick="openCartCheckoutModal()">Checkout</button>
+    <button class="btn btn-outline mt-2" onclick="toggleCart()">Close</button>
+    <div id="cartCheckoutModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+      <div class="bg-[#16213e] p-8 rounded-lg shadow-lg w-full max-w-md relative">
+        <button class="absolute top-2 right-2 text-white text-2xl" onclick="closeCartCheckoutModal()">&times;</button>
+        <h2 class="text-2xl font-bold mb-4">Cart Checkout</h2>
+        <form id="cartCheckoutForm" class="flex flex-col gap-4">
+          <input type="text" id="cartBuyerName" class="input input-bordered bg-[#0f172a] text-white" placeholder="Your Name" required />
+          <input type="text" id="cartBuyerAddress" class="input input-bordered bg-[#0f172a] text-white" placeholder="Your Address" required />
+          <p class="font-semibold">Total: Rs. <span id="cartCheckoutTotal"></span></p>
+          <button type="submit" class="btn btn-success">Confirm Purchase</button>
+        </form>
+        <div id="cartCheckoutThankYou" class="hidden text-center mt-4 text-green-400 font-bold">Thank you for your purchase!</div>
+      </div>
+    </div>
+  </aside>
+
+  <section id="orders" class="p-6">
+    <h2 class="text-3xl font-semibold mb-6 pixel-title">My Orders</h2>
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-4">
+      <button id="clearOrdersBtn" class="btn btn-error btn-sm">Clear All Orders</button>
+      <button id="exportOrdersBtn" class="btn btn-info btn-sm">Export Orders</button>
+      <span class="text-xs text-gray-400">(Your orders are saved in your browser)</span>
+    </div>
+    <div id="ordersList" class="space-y-4"></div>
+  </section>
+
+  <footer class="footer p-10 bg-[#1a1a2e] text-gray-400 mt-10">
+    <nav>
+      <h6 class="footer-title pixel-title">Gawad Electronics</h6>
+      <a class="link link-hover" href="#mobiles">Mobiles</a>
+      <a class="link link-hover" href="#laptops">Laptops</a>
+      <a class="link link-hover" href="#tvs">TVs</a>
+      <a class="link link-hover" href="#">Contact</a>
+    </nav>
+  </footer>
+
+  <div id="buyModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-[#16213e] p-8 rounded-lg shadow-lg w-full max-w-md relative">
+      <button class="absolute top-2 right-2 text-white text-2xl" onclick="closeBuyModal()">&times;</button>
+      <h2 class="text-2xl font-bold mb-4">Buy <span id="buyProductName"></span></h2>
+      <form id="buyForm" class="flex flex-col gap-4">
+        <input type="text" id="buyerName" class="input input-bordered bg-[#0f172a] text-white" placeholder="Your Name" required />
+        <input type="text" id="buyerAddress" class="input input-bordered bg-[#0f172a] text-white" placeholder="Your Address" required />
+        <p class="font-semibold">Total: Rs. <span id="buyProductPrice"></span></p>
+        <button type="submit" class="btn btn-success">Confirm Purchase</button>
+      </form>
+      <div id="buyThankYou" class="hidden text-center mt-4 text-green-400 font-bold">Thank you for your purchase!</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Product data arrays
+    const mobiles = [
+      {name: 'Samsung Galaxy S25 Ultra', price: 119999, img: 'images/Samsung-Galaxy-S25-Ultra-1-1.webp', desc: '6.9\" 120Hz AMOLED, Snapdragon 8 Elite, 200MP camera, S Pen, 12/16GB RAM, 8K video, 45W fast charging.'},
+      {name: 'Google Pixel 9 Pro XL', price: 104999, img: 'images/Google-Pixel-9-Pro-XL-2.webp', desc: '6.8\" LTPO OLED, Google Tensor G4, 50MP triple camera, pure Android 15, Titan M3 security, 5500mAh battery, 30W fast charging.'},
+      {name: 'OnePlus 13', price: 69999, img: 'images/OnePlus-13-5.webp', desc: '6.7\" AMOLED, Snapdragon 8 Gen 4, 50MP Hasselblad camera, 5400mAh battery, 100W SuperVOOC, OxygenOS 15.'},
+      {name: 'OnePlus 13R', price: 44999, img: 'images/OnePlus-13R-1-2.webp', desc: '6.74\" 120Hz AMOLED, Snapdragon 8s Gen 3, 50MP Sony IMX890, 5500mAh, 100W charging.'},
+      {name: 'Redmi Note 14 Pro 5G', price: 24999, img: 'images/REDMI-Note-14-Pro-5G-1-1.webp', desc: '6.67\" AMOLED, Snapdragon 7s Gen 2, 200MP camera, 5000mAh, 67W turbo charge.'},
+      {name: 'iQOO 13', price: 59999, img: 'images/iQOO-13-1-1.webp', desc: '6.78\" 144Hz AMOLED, Snapdragon 8 Gen 4, 50MP OIS camera, 5000mAh, 120W FlashCharge.'},
+      {name: 'Vivo X200 Pro', price: 79999, img: 'images/Vivo-X200-Pro-3.webp', desc: '6.8\" AMOLED, Dimensity 9400, 50MP Zeiss camera, V3+ imaging chip, 5400mAh, 80W charging.'},
+      {name: 'Motorola Edge 50 Pro', price: 31999, img: 'images/Motorola edge 50pro.jpg', desc: '6.7\" pOLED, Snapdragon 7 Gen 3, 50MP triple camera, 4500mAh, 125W charging, IP68.'},
+      {name: 'Apple iPhone 16 Pro Max', price: 159900, img: 'images/apple-iphone-16-pro-max-1.jpg', desc: '6.9\" Super Retina XDR, A18 Pro, 48MP triple camera, iOS 18, 30W fast charge, titanium build.'},
+      {name: 'Google Pixel 9 Pro', price: 94999, img: 'images/Google-Pixel-9-Pro-XL-2.webp', desc: '6.7\" OLED, Google Tensor G4, 50MP dual camera, Android 15, 5000mAh, 30W charging.'}
+    ];
+    const laptops = [
+      {name: 'Apple MacBook Air 13" (M4)', price: 119900, img: 'images/Apple MacBook Air 13-inch (M4).webp', desc: '13.6" Liquid Retina, Apple M4 chip, 8GB/16GB RAM, 256GB/512GB SSD, 18hr battery, 1.2kg ultra-light.'},
+      {name: 'Dell XPS 13 (9350, Intel Core Ultra 2nd Gen)', price: 134999, img: 'images/Dell XPS 13 (9350, Intel Core Ultra 2nd Gen).webp', desc: '13.4" FHD+ InfinityEdge, Intel Core Ultra 7, 16GB RAM, 1TB SSD, 1.17kg, 12hr battery.'},
+      {name: 'MacBook Pro 16" (M4 Pro)', price: 249900, img: 'images/MacBook Pro 16-inch (M4 Pro).webp', desc: '16.2" XDR, Apple M4 Pro, 18GB RAM, 1TB SSD, 22hr battery, 2.1kg, 140W charging.'},
+      {name: 'Razer Blade 16', price: 329999, img: 'images/Razer Blade 16.webp', desc: '16" QHD+ 240Hz, Intel i9-14900HX, RTX 4090, 32GB RAM, 2TB SSD, per-key RGB, CNC aluminum.'},
+      {name: 'Microsoft Surface Laptop 7', price: 109999, img: 'images/Microsoft Surface Laptop.webp', desc: '13.8" PixelSense, Snapdragon X Elite, 16GB RAM, 512GB SSD, 18hr battery, 1.3kg.'},
+      {name: 'Lenovo IdeaPad Duet 5 OLED Chromebook', price: 49999, img: 'images/Lenovo IdeaPad Duet 5 OLED Chromebook.webp', desc: '13.3" FHD OLED, Snapdragon 7c Gen 2, 8GB RAM, 128GB eMMC, Detachable, 15hr battery.'},
+      {name: 'Acer Chromebook Plus 515', price: 39999, img: 'images/Acer Chromebook Plus 515.webp', desc: '15.6" FHD, Intel Core i3-N305, 8GB RAM, 128GB SSD, 10hr battery, Wi-Fi 6.'},
+      {name: 'Apple MacBook Air 13" (M3)', price: 114900, img: 'images/Apple MacBook Air 13-inch (M3).webp', desc: '13.6" Liquid Retina, Apple M3 chip, 8GB RAM, 256GB SSD, 18hr battery, 1.24kg.'},
+      {name: 'Dell Inspiron 14 Plus', price: 84999, img: 'images/Dell Inspiron 14 Plus.webp', desc: '14" 2.2K, Intel Core i7-13700H, 16GB RAM, 1TB SSD, NVIDIA RTX 3050, 1.5kg.'},
+      {name: 'Asus ZenBook 14 OLED', price: 104999, img: 'images/Asus ZenBook 14 OLED.webp', desc: '14" 2.8K OLED, AMD Ryzen 7 8840HS, 16GB RAM, 1TB SSD, 1.2kg, 18hr battery.'}
+    ];
+    const tvs = [
+      {name: 'Samsung 50" Neo QLED 4K', price: 74990, img: 'images/Samsung 125 cm (50 inches) 4K Ultra HD Smart Neo QLED TV.avif', desc: '50" 4K Ultra HD, Neo QLED, Quantum Matrix, Dolby Atmos, Tizen OS, 120Hz, 4 HDMI, Voice Assistant, Slim design.'},
+      {name: 'Sony 65" Bravia 2 4K', price: 189990, img: 'images/Sony 164 cm (65 inches) BRAVIA 2 4K Ultra HD Smart LED Google TV.avif', desc: '65" 4K Ultra HD, Google TV, XR Cognitive Processor, Dolby Vision/Atmos, 120Hz, 4 HDMI, X-Wide Angle, Slim bezel.'},
+      {name: 'Xiaomi 50" X Pro 4K', price: 42999, img: 'images/Xiaomi 125 cm (50 inches) X Pro 4K Dolby Vision IQ Series Smart Google TV.avif', desc: '50" 4K Dolby Vision IQ, Google TV, 40W speakers, HDR10+, ALLM, 3 HDMI, Bezel-less, PatchWall+, Smart remote.'},
+      {name: 'LG 32" HD Ready Smart', price: 15999, img: 'images/LG 80 cm (32 inches) HD Ready Smart LED TV.avif', desc: '32" HD Ready, WebOS, Active HDR, 2 HDMI, 1 USB, 10W speakers, ThinQ AI.'},
+      {name: 'Panasonic 55" 4K Google TV', price: 49990, img: 'images/Panasonic 139 cm (55 inches) 4K Ultra HD Smart LED Google TV.avif', desc: '55" 4K Ultra HD, Google TV, Dolby Vision/Atmos, 3 HDMI, 2 USB, Bezel-less, 20W speakers.'},
+      {name: 'Hisense 43" E68N QLED', price: 29999, img: 'images/Hisense 108 cm (43 inches) E68N Series 4K Ultra HD Smart Google QLED TV.avif', desc: '43" 4K QLED, Google TV, Dolby Vision/Atmos, 3 HDMI, 2 USB, 24W speakers, Game Mode.'},
+      {name: 'Acer 32" V Pro QLED', price: 17999, img: 'images/Acer 80 cm (32 inches) V Pro Series HD Ready Smart QLED Google TV.avif', desc: '32" HD Ready QLED, Google TV, Dolby Audio, 2 HDMI, 2 USB, Frameless, 30W speakers.'},
+      {name: 'Vu 55" Vibe QLED 4K', price: 39999, img: 'images/Vu 139cm (55 inches) Vibe Series QLED 4K Google TV.avif', desc: '55" 4K QLED, Google TV, Dolby Vision/Atmos, 3 HDMI, 2 USB, 50W speakers, Bezel-less.'},
+      {name: 'ONIDA 55" Nexg 4K', price: 36999, img: 'images/ONIDA 139 cm (55 inches) Nexg Series 4K Ultra HD LED Smart Google TV.avif', desc: '55" 4K Ultra HD, Google TV, Dolby Vision/Atmos, 3 HDMI, 2 USB, 24W speakers, Frameless.'},
+      {name: 'TOSHIBA 50" C350NP 4K', price: 33999, img: 'images/TOSHIBA 126 cm (50 inches) C350NP Series 4K Ultra HD Smart LED Google TV.avif', desc: '50" 4K Ultra HD, Google TV, Dolby Vision/Atmos, 3 HDMI, 2 USB, 24W speakers, Bezel-less.'}
+    ];
+
+    function renderProductSection(list, containerId, showAll, searchTerm = '') {
+      const container = document.getElementById(containerId);
+      let filtered = list;
+      if (searchTerm) {
+        filtered = list.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      }
+      const products = showAll ? filtered : filtered.slice(0, 3);
+      if (!filtered.length) {
+        container.innerHTML = '<div class="text-gray-400 col-span-full">No products found.</div>';
+        return;
+      }
+      container.innerHTML = products.map(item => `
+        <div class="card bg-[#16213e] shadow-lg hover:scale-105 transition-transform">
+          <figure><img src="${item.img}" alt="${item.name}" class="h-48 w-full object-contain" /></figure>
+          <div class="card-body">
+            <h3 class="card-title text-lg">${item.name}</h3>
+            <p class="text-[#00e0ff]">₹${item.price.toLocaleString()}</p>
+            <p class="text-xs text-gray-300 mb-2">${item.desc}</p>
+            <button class="btn btn-accent w-full" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})">Add to Cart</button>
+            <button class="btn btn-primary w-full mt-2" onclick="openBuyModal('${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Now</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      let mobilesShowAll = false, laptopsShowAll = false, tvsShowAll = false;
+      let mobilesSearch = '', laptopsSearch = '', tvsSearch = '';
+      renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, mobilesSearch);
+      renderProductSection(laptops, 'laptops-list', laptopsShowAll, laptopsSearch);
+      renderProductSection(tvs, 'tvs-list', tvsShowAll, tvsSearch);
+      document.getElementById('mobiles-toggle').onclick = function() {
+        mobilesShowAll = !mobilesShowAll;
+        renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, mobilesSearch);
+        this.textContent = mobilesShowAll ? 'Show Less' : 'Show All';
+      };
+      document.getElementById('laptops-toggle').onclick = function() {
+        laptopsShowAll = !laptopsShowAll;
+        renderProductSection(laptops, 'laptops-list', laptopsShowAll, laptopsSearch);
+        this.textContent = laptopsShowAll ? 'Show Less' : 'Show All';
+      };
+      document.getElementById('tvs-toggle').onclick = function() {
+        tvsShowAll = !tvsShowAll;
+        renderProductSection(tvs, 'tvs-list', tvsShowAll, tvsSearch);
+        this.textContent = tvsShowAll ? 'Show Less' : 'Show All';
+      };
+      document.getElementById('mobiles-search').addEventListener('input', function() {
+        mobilesSearch = this.value;
+        renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, mobilesSearch);
+      });
+      document.getElementById('laptops-search').addEventListener('input', function() {
+        laptopsSearch = this.value;
+        renderProductSection(laptops, 'laptops-list', laptopsShowAll, laptopsSearch);
+      });
+      document.getElementById('tvs-search').addEventListener('input', function() {
+        tvsSearch = this.value;
+        renderProductSection(tvs, 'tvs-list', tvsShowAll, tvsSearch);
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentBuyProduct = null;
+      function openBuyModal(product, price) {
+        currentBuyProduct = { product, price };
+        document.getElementById('buyProductName').textContent = product;
+        document.getElementById('buyProductPrice').textContent = price;
+        document.getElementById('buyModal').classList.remove('hidden');
+        document.getElementById('buyThankYou').classList.add('hidden');
+        document.getElementById('buyForm').reset();
+        document.getElementById('buyForm').style.display = '';
+      }
+      window.openBuyModal = openBuyModal;
+      function closeBuyModal() {
+        document.getElementById('buyModal').classList.add('hidden');
+      }
+      window.closeBuyModal = closeBuyModal;
+      document.getElementById('buyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('buyForm').style.display = 'none';
+        document.getElementById('buyThankYou').classList.remove('hidden');
+        const name = document.getElementById('buyerName').value;
+        const address = document.getElementById('buyerAddress').value;
+        saveOrder(currentBuyProduct.product, currentBuyProduct.price, name, address);
+        renderOrders();
+        setTimeout(closeBuyModal, 2000);
+      });
+
+      // CART FUNCTIONALITY
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      function addToCart(product, price) {
+        const idx = cart.findIndex(item => item.product === product);
+        if (idx !== -1) {
+          cart[idx].qty += 1;
+        } else {
+          cart.push({ product, price, qty: 1 });
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+      window.addToCart = addToCart;
+      function renderCart() {
+        cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const cartItems = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartTotal = document.getElementById('cart-total');
+        if (!cart.length) {
+          cartItems.innerHTML = '<li class="text-gray-400">Cart is empty.</li>';
+          cartCount.textContent = 0;
+          cartTotal.textContent = 0;
+          return;
+        }
+        cartItems.innerHTML = cart.map((item, i) => `
+          <li class="flex justify-between items-center bg-[#1a1a2e] rounded p-2">
+            <div>
+              <span class="font-semibold">${item.product}</span><br>
+              <span class="text-xs text-gray-400">Rs. ${item.price} x ${item.qty}</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <button class="btn btn-xs btn-outline btn-info" onclick="updateCartQty(${i}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="btn btn-xs btn-outline btn-info" onclick="updateCartQty(${i}, 1)">+</button>
+              <button class="btn btn-xs btn-outline btn-error" onclick="removeFromCart(${i})">✕</button>
+            </div>
+          </li>
+        `).join('');
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+        cartTotal.textContent = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      }
+      window.renderCart = renderCart;
+      function updateCartQty(idx, delta) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) {
+          cart.splice(idx, 1);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+      window.updateCartQty = updateCartQty;
+      function removeFromCart(idx) {
+        cart.splice(idx, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+      window.removeFromCart = removeFromCart;
+      function toggleCart() {
+        const cartAside = document.getElementById('cart');
+        cartAside.classList.toggle('hidden');
+        renderCart();
+      }
+      window.toggleCart = toggleCart;
+      function openCartCheckoutModal() {
+        if (!cart.length) return alert('Your cart is empty!');
+        document.getElementById('cartCheckoutModal').classList.remove('hidden');
+        document.getElementById('cartCheckoutThankYou').classList.add('hidden');
+        document.getElementById('cartCheckoutForm').reset();
+        document.getElementById('cartCheckoutForm').style.display = '';
+        document.getElementById('cartCheckoutTotal').textContent = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      }
+      window.openCartCheckoutModal = openCartCheckoutModal;
+      function closeCartCheckoutModal() {
+        document.getElementById('cartCheckoutModal').classList.add('hidden');
+      }
+      window.closeCartCheckoutModal = closeCartCheckoutModal;
+      document.getElementById('cartCheckoutForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('cartBuyerName').value;
+        const address = document.getElementById('cartBuyerAddress').value;
+        // Defensive: reload cart from storage in case of changes
+        cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (!cart.length) {
+          alert('Your cart is empty!');
+          return;
+        }
+        cart.forEach(item => {
+          for (let i = 0; i < item.qty; i++) {
+            saveOrder(item.product, item.price, name, address);
+          }
+        });
+        document.getElementById('cartCheckoutForm').style.display = 'none';
+        document.getElementById('cartCheckoutThankYou').classList.remove('hidden');
+        cart = [];
+        localStorage.removeItem('cart');
+        renderCart();
+        renderOrders();
+        setTimeout(() => {
+          closeCartCheckoutModal();
+          const cartAside = document.getElementById('cart');
+          if (!cartAside.classList.contains('hidden')) cartAside.classList.add('hidden');
+        }, 2000);
+      });
+
+      // Orders logic
+      function saveOrder(product, price, name, address) {
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        const id = 'ORD' + Date.now() + Math.floor(Math.random()*1000);
+        const status = Math.random() > 0.5 ? 'Processing' : 'Delivered';
+        orders.push({
+          id,
+          product,
+          price,
+          name,
+          address,
+          status,
+          time: new Date().toLocaleString(),
+          deliveryDate: status === 'Delivered' ? getRandomPastDate() : getRandomFutureDate(),
+          notes: ''
+        });
+        localStorage.setItem('orders', JSON.stringify(orders));
+      }
+      window.saveOrder = saveOrder;
+      function getRandomPastDate() {
+        const daysAgo = Math.floor(Math.random() * 10) + 1;
+        const d = new Date();
+        d.setDate(d.getDate() - daysAgo);
+        return d.toLocaleDateString();
+      }
+      function getRandomFutureDate() {
+        const daysAhead = Math.floor(Math.random() * 7) + 2;
+        const d = new Date();
+        d.setDate(d.getDate() + daysAhead);
+        return d.toLocaleDateString();
+      }
+      function renderOrders() {
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        const ordersList = document.getElementById('ordersList');
+        if (!orders.length) {
+          ordersList.innerHTML = '<div class="text-gray-400">No orders yet.</div>';
+          return;
+        }
+        ordersList.innerHTML = orders.map((order, idx) => `
+          <div class="bg-[#16213e] p-4 rounded-lg pixel-border flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <div class="flex-1">
+              <div class="font-bold text-lg">${order.product} <span class="text-xs text-gray-400 ml-2">#${order.id}</span></div>
+              <div class="text-[#00e0ff]">Rs. ${order.price}</div>
+              <div class="text-sm text-gray-300 mt-1">Name: <span class="font-semibold">${order.name}</span></div>
+              <div class="text-sm text-gray-300">Address: <span class="font-semibold">${order.address}</span></div>
+              <div class="text-xs text-gray-400 mt-1">Ordered at: ${order.time}</div>
+              <div class="text-xs text-gray-400">${order.status === 'Delivered' ? 'Delivered on' : 'Expected by'}: ${order.deliveryDate}</div>
+              <div class="text-xs text-gray-400">Notes: <span id="notes-${order.id}">${order.notes || 'None'}</span></div>
+              <input type="text" class="input input-xs input-bordered mt-1 w-40" id="noteInput-${order.id}" placeholder="Add note..." />
+              <button class="btn btn-xs btn-outline btn-info mt-1" onclick="addNoteToOrder('${order.id}')">Save Note</button>
+            </div>
+            <div class="flex flex-col items-end gap-2 min-w-[120px]">
+              <span class="badge ${order.status === 'Delivered' ? 'badge-success' : 'badge-warning'}">${order.status}</span>
+              <button class="btn btn-xs btn-outline btn-error" onclick="deleteOrder('${order.id}')">Remove</button>
+            </div>
+          </div>
+        `).join('');
+      }
+      window.renderOrders = renderOrders;
+      function deleteOrder(id) {
+        let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        orders = orders.filter(order => order.id !== id);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        renderOrders();
+      }
+      window.deleteOrder = deleteOrder;
+      document.getElementById('clearOrdersBtn').onclick = function() {
+        if (confirm('Are you sure you want to clear all orders?')) {
+          localStorage.removeItem('orders');
+          renderOrders();
+        }
+      };
+      document.getElementById('exportOrdersBtn').onclick = function() {
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        if (!orders.length) return alert('No orders to export!');
+        const csv = [
+          ['Order ID','Product','Price','Name','Address','Status','Order Time','Delivery Date','Notes'],
+          ...orders.map(o => [o.id, o.product, o.price, o.name, o.address, o.status, o.time, o.deliveryDate, o.notes.replace(/\n/g, ' ')]),
+        ].map(row => row.map(String).map(s => '"'+s.replace(/"/g,'""')+'"').join(',')).join('\n');
+        const blob = new Blob([csv], {type: 'text/csv'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'my_orders.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+      window.addNoteToOrder = function(id) {
+        const input = document.getElementById('noteInput-' + id);
+        const note = input.value.trim();
+        if (!note) return alert('Please enter a note.');
+        let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        const idx = orders.findIndex(o => o.id === id);
+        if (idx !== -1) {
+          orders[idx].notes = note;
+          localStorage.setItem('orders', JSON.stringify(orders));
+          renderOrders();
+        }
+      };
+
+      // Cart: clear all button
+      function clearCart() {
+        if (confirm('Are you sure you want to clear your cart?')) {
+          cart = [];
+          localStorage.removeItem('cart');
+          renderCart();
+        }
+      }
+      window.clearCart = clearCart;
+      // Add clear cart button to cart aside
+      const cartAside = document.getElementById('cart');
+      if (cartAside && !document.getElementById('clearCartBtn')) {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-outline btn-error mt-2 w-full';
+        btn.id = 'clearCartBtn';
+        btn.textContent = 'Clear Cart';
+        btn.onclick = clearCart;
+        cartAside.appendChild(btn);
+      }
+
+      // Header search bar logic (improved fuzzy match like home page)
+      const headerSearchForm = document.getElementById('header-search-form');
+      const headerSearchInput = document.getElementById('header-search-input');
+      // Product keywords for fuzzy search
+      const productKeywords = [
+        {keywords: ['mobile', 'mobiles', 'moblies', 'phone', 'phones', 'cell', 'cellphone'], section: 'mobiles'},
+        {keywords: ['laptop', 'laptops', 'labtop', 'notebook', 'notebooks', 'computer'], section: 'laptops'},
+        {keywords: ['tv', 'tvs', 'televsion', 'television', 'smart tv', 'smarttv'], section: 'tvs'}
+      ];
+      if (headerSearchForm && headerSearchInput) {
+        headerSearchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const query = headerSearchInput.value.trim().toLowerCase();
+          if (!query) return;
+          // Fuzzy match for section keywords
+          let matchedSection = '';
+          for (const cat of productKeywords) {
+            if (cat.keywords.some(function(k){ return query.includes(k) || k.includes(query); })) {
+              matchedSection = cat.section;
+              break;
+            }
+          }
+          if (matchedSection) {
+            document.getElementById(matchedSection).scrollIntoView({behavior:'smooth'});
+            return;
+          }
+          // Try to match in all products
+          let found = null;
+          let section = '';
+          let idx = -1;
+          [
+            {list: mobiles, section: 'mobiles'},
+            {list: laptops, section: 'laptops'},
+            {list: tvs, section: 'tvs'}
+          ].some(cat => {
+            idx = cat.list.findIndex(item => item.name.toLowerCase().includes(query));
+            if (idx !== -1) {
+              found = cat.list[idx];
+              section = cat.section;
+              return true;
+            }
+            return false;
+          });
+          if (found) {
+            document.getElementById(section).scrollIntoView({behavior:'smooth'});
+            const sectionSearch = document.getElementById(section+'-search');
+            if (sectionSearch) {
+              sectionSearch.value = query;
+              sectionSearch.dispatchEvent(new Event('input'));
+            }
+          } else {
+            alert('No matching product found!');
+          }
+        });
+      }
+
+      renderOrders();
+      renderCart();
+    });
+  </script>
+</body>
+
+</html>
