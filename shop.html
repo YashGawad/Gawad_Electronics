@@ -31,21 +31,32 @@
         <li><a href="#laptops">Laptops</a></li>
         <li><a href="#tvs">TVs</a></li>
       </ul>
+      <div class="dropdown dropdown-end">
+        <button tabindex="0" class="btn btn-ghost md:inline-flex hidden"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+          <li><a href="#orders">My Orders</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </div>
       <button id="theme-toggle" class="pixel-btn px-4 py-2 rounded ml-2">🌙 Theme</button>
     </div>
     <!-- Mobile Nav -->
     <div class="flex-none md:hidden order-2">
-      <ul class="menu menu-horizontal px-1">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="#mobiles">Mobiles</a></li>
-        <li><a href="#laptops">Laptops</a></li>
-        <li><a href="#tvs">TVs</a></li>
-        <li><a href="#orders" id="ordersBtn">My Orders</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
-        <li><button id="theme-toggle-mobile" class="pixel-btn px-4 py-2 rounded w-full mt-2">🌙 Theme</button></li>
-      </ul>
+      <div class="dropdown dropdown-end">
+        <button tabindex="0" class="btn btn-ghost inline-flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#mobiles">Mobiles</a></li>
+          <li><a href="#laptops">Laptops</a></li>
+          <li><a href="#tvs">TVs</a></li>
+          <li><a href="#orders">My Orders</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#" onclick="toggleCart()">🛒 Your Cart (<span id="cart-count">0</span>)</a></li>
+          <li><button id="theme-toggle-mobile" class="pixel-btn px-4 py-2 rounded w-full mt-2">🌙 Theme</button></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -517,7 +528,7 @@
       renderOrders();
       renderCart();
     });
-    // THEME TOGGLE LOGIC (ensure only one DOMContentLoaded for theme)
+    // THEME TOGGLE LOGIC (fixed: allow toggling multiple times)
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
@@ -529,18 +540,18 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       // Load theme from local storage or default to light
-      const theme = localStorage.getItem('theme') || 'light';
+      let theme = localStorage.getItem('theme') || 'light';
       setTheme(theme);
 
-      // Theme toggle event listeners
-      document.getElementById('theme-toggle').addEventListener('click', function() {
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-      });
-      document.getElementById('theme-toggle-mobile').addEventListener('click', function() {
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-      });
+      function toggleTheme() {
+        theme = (document.documentElement.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+        setTheme(theme);
+      }
+
+      const desktopBtn = document.getElementById('theme-toggle');
+      if (desktopBtn) desktopBtn.addEventListener('click', toggleTheme);
+      const mobileBtn = document.getElementById('theme-toggle-mobile');
+      if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
     });
   </script>
 </body>

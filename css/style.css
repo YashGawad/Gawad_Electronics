@@ -158,3 +158,126 @@ input, textarea, select {
   min-width: 120px;
   max-width: 100%;
 }
+
+/* Hamburger/Dropdown menu background fix for mobile (shop page) */
+@media (max-width: 767px) {
+  .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.12), 0 1.5px 8px 0 #7c2ae822;
+  }
+  [data-theme="dark"] .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 #000a, 0 1.5px 8px 0 #7c2ae822;
+  }
+  .dropdown-content.menu a, .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+  }
+  [data-theme="dark"] .dropdown-content.menu a, [data-theme="dark"] .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+  }
+}
+
+/* Hamburger/Dropdown menu background fix for mobile (home page) */
+@media (max-width: 767px) {
+  .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.12), 0 1.5px 8px 0 #7c2ae822;
+  }
+  [data-theme="dark"] .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 #000a, 0 1.5px 8px 0 #7c2ae822;
+  }
+  .dropdown-content.menu a, .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+  }
+  [data-theme="dark"] .dropdown-content.menu a, [data-theme="dark"] .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+  }
+}
+
+/* Force hamburger dropdown menu to be fully opaque and above all content */
+@media (max-width: 767px) {
+  .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.18), 0 1.5px 8px 0 #7c2ae822;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+    border: 2px solid var(--pixel-border) !important;
+  }
+  [data-theme="dark"] .dropdown-content.menu {
+    background: var(--pixel-card) !important;
+    color: var(--pixel-title) !important;
+    box-shadow: 0 4px 24px 0 #000a, 0 1.5px 8px 0 #7c2ae822;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+    border: 2px solid var(--pixel-border) !important;
+  }
+  .dropdown-content.menu a, .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+    background: transparent !important;
+  }
+  [data-theme="dark"] .dropdown-content.menu a, [data-theme="dark"] .dropdown-content.menu button {
+    color: var(--pixel-title) !important;
+    background: transparent !important;
+  }
+}
+
+/* Fix product card actions overlap and stacking on mobile */
+@media (max-width: 767px) {
+  .pixel-product-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 340px !important;
+    height: 480px !important;
+    margin: 0 auto 1.5rem auto;
+    background: var(--pixel-card);
+  }
+  .pixel-product-box img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  .pixel-product-box .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .pixel-product-box .card-body {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding-bottom: 0 !important;
+  }
+  .pixel-product-box .product-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: auto;
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    padding: 0.5rem 0 0.25rem 0;
+    border-radius: 0 0 1rem 1rem;
+  }
+  .pixel-product-box button {
+    min-width: 120px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
