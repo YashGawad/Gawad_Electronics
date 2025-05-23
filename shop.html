@@ -75,7 +75,7 @@
       <h2 class="text-3xl font-semibold pixel-title">Mobiles</h2>
       <input id="mobiles-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search Mobiles..." />
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="mobiles-list">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-y-10 lg:gap-y-12 justify-items-center items-stretch" id="mobiles-list">
       <!-- Mobiles will be rendered here -->
     </div>
     <button id="mobiles-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
@@ -87,7 +87,7 @@
       <h2 class="text-3xl font-semibold pixel-title">Laptops</h2>
       <input id="laptops-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search Laptops..." />
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="laptops-list">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-y-10 lg:gap-y-12 justify-items-center items-stretch" id="laptops-list">
       <!-- Laptops will be rendered here -->
     </div>
     <button id="laptops-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
@@ -99,7 +99,7 @@
       <h2 class="text-3xl font-semibold pixel-title">TVs</h2>
       <input id="tvs-search" type="text" class="input input-bordered w-full sm:w-64" placeholder="Search TVs..." />
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center" id="tvs-list">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-y-10 lg:gap-y-12 justify-items-center items-stretch" id="tvs-list">
       <!-- TVs will be rendered here -->
     </div>
     <button id="tvs-toggle" class="btn btn-outline btn-accent mt-4">Show All</button>
@@ -196,7 +196,7 @@
       {name: 'Acer Chromebook Plus 515', price: 39999, img: 'images/Acer Chromebook Plus 515.webp', desc: '15.6" FHD, Intel Core i3-N305, 8GB RAM, 128GB SSD, 10hr battery, Wi-Fi 6.'},
       {name: 'Apple MacBook Air 13" (M3)', price: 114900, img: 'images/Apple MacBook Air 13-inch (M3).webp', desc: '13.6" Liquid Retina, Apple M3 chip, 8GB RAM, 256GB SSD, 18hr battery, 1.24kg.'},
       {name: 'Dell Inspiron 14 Plus', price: 84999, img: 'images/Dell Inspiron 14 Plus.webp', desc: '14" 2.2K, Intel Core i7-13700H, 16GB RAM, 1TB SSD, NVIDIA RTX 3050, 1.5kg.'},
-      {name: 'Asus ZenBook 14 OLED', price: 104999, img: 'images/Asus ZenBook 14 OLED.webp', desc: '14" 2.8K OLED, AMD Ryzen 7 8840HS, 16GB RAM, 1TB SSD, 1.2kg, 18hr battery.'}
+      {name: 'Asus ZenBook 14 OLED', price: 104999, img: 'images/Asus zenbook 14 oled.jpg', desc: '14" 2.8K OLED, AMD Ryzen 7 8840HS, 16GB RAM, 1TB SSD, 1.2kg, 18hr battery.'}
     ];
     const tvs = [
       {name: 'Samsung 50" Neo QLED 4K', price: 74990, img: 'images/Samsung 125 cm (50 inches) 4K Ultra HD Smart Neo QLED TV.avif', desc: '50" 4K Ultra HD, Neo QLED, Quantum Matrix, Dolby Atmos, Tizen OS, 120Hz, 4 HDMI, Voice Assistant, Slim design.'},
@@ -223,15 +223,16 @@
         return;
       }
       container.innerHTML = products.map(item => `
-        <div class="pixel-product-box pixel-border shadow-lg hover:scale-105 transition-transform flex flex-col justify-between">
-          <figure><img src="${item.img}" alt="${item.name}" /></figure>
-          <div class="card-body w-full flex flex-col items-center justify-end gap-2">
-            <h3 class="card-title text-lg">${item.name}</h3>
+        <div class="pixel-product-box pixel-border shadow-lg hover:scale-105 transition-transform flex flex-col h-full min-h-[420px] sm:min-h-[440px] w-full max-w-xs p-4 overflow-visible"
+          style="min-height: 420px; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+          <figure class="flex-1 flex items-center justify-center py-4 w-full overflow-visible"><img src="${item.img}" alt="${item.name}" class="max-h-32 object-contain w-full" /></figure>
+          <div class="card-body w-full flex flex-col items-center justify-end gap-2 flex-1 overflow-visible">
+            <h3 class="card-title text-lg text-center">${item.name}</h3>
             <p class="text-[#00e0ff]">₹${item.price.toLocaleString()}</p>
-            <p class="text-xs text-gray-300 mb-2">${item.desc}</p>
-            <div class="w-full flex flex-col gap-2 mt-2">
-              <button class="btn btn-accent w-full" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})">Add to Cart</button>
-              <button class="btn btn-primary w-full" onclick="openBuyModal('${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Now</button>
+            <p class="text-xs text-gray-300 mb-2 text-center">${item.desc}</p>
+            <div class="w-full flex flex-col gap-2 mt-auto pb-2" style="margin-top: auto; padding-bottom: 0.5rem;">
+              <button class="btn btn-accent w-full" style="min-height:44px;" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', ${item.price})">Add to Cart</button>
+              <button class="btn btn-primary w-full" style="min-height:44px;" onclick="openBuyModal('${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Now</button>
             </div>
           </div>
         </div>
@@ -271,6 +272,98 @@
         tvsSearch = this.value;
         renderProductSection(tvs, 'tvs-list', tvsShowAll, tvsSearch);
       });
+      // HEADER SEARCH LOGIC (improved for category jump and fuzzy search)
+      function levenshtein(a, b) {
+        const an = a.length, bn = b.length;
+        if (an === 0) return bn;
+        if (bn === 0) return an;
+        const matrix = [];
+        for (let i = 0; i <= bn; ++i) matrix[i] = [i];
+        for (let j = 0; j <= an; ++j) matrix[0][j] = j;
+        for (let i = 1; i <= bn; ++i) {
+          for (let j = 1; j <= an; ++j) {
+            matrix[i][j] = b.charAt(i - 1) === a.charAt(j - 1)
+              ? matrix[i - 1][j - 1]
+              : Math.min(matrix[i - 1][j - 1] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j] + 1);
+          }
+        }
+        return matrix[bn][an];
+      }
+      function fuzzyFilter(list, term) {
+        if (!term) return list;
+        const threshold = 3; // allow up to 3 edits
+        return list.filter(item => {
+          const name = item.name.toLowerCase();
+          const t = term.toLowerCase();
+          return name.includes(t) || levenshtein(name, t) <= threshold;
+        });
+      }
+      const headerSearchForm = document.getElementById('header-search-form');
+      const headerSearchInput = document.getElementById('header-search-input');
+      if (headerSearchForm && headerSearchInput) {
+        headerSearchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const term = headerSearchInput.value.trim().toLowerCase();
+          // Set all section search inputs to empty
+          document.getElementById('mobiles-search').value = '';
+          document.getElementById('laptops-search').value = '';
+          document.getElementById('tvs-search').value = '';
+          // Category keywords and common misspellings
+          const mobileWords = ['mobile','mobiles','mobail','mobailes','moblie','mobiles','mobaile'];
+          const laptopWords = ['laptop','laptops','laptap','laptaps','labtop','labtops'];
+          const tvWords = ['tv','tvs','television','televsion','televsion','televsions'];
+          let scrolled = false;
+          if (mobileWords.some(w => term.includes(w))) {
+            mobilesShowAll = true;
+            laptopsShowAll = false;
+            tvsShowAll = false;
+            document.getElementById('mobiles-toggle').textContent = 'Show Less';
+            document.getElementById('laptops-toggle').textContent = 'Show All';
+            document.getElementById('tvs-toggle').textContent = 'Show All';
+            renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, '');
+            renderProductSection(laptops, 'laptops-list', laptopsShowAll, '');
+            renderProductSection(tvs, 'tvs-list', tvsShowAll, '');
+            document.getElementById('mobiles').scrollIntoView({behavior:'smooth'});
+            scrolled = true;
+          } else if (laptopWords.some(w => term.includes(w))) {
+            laptopsShowAll = true;
+            mobilesShowAll = false;
+            tvsShowAll = false;
+            document.getElementById('mobiles-toggle').textContent = 'Show All';
+            document.getElementById('laptops-toggle').textContent = 'Show Less';
+            document.getElementById('tvs-toggle').textContent = 'Show All';
+            renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, '');
+            renderProductSection(laptops, 'laptops-list', laptopsShowAll, '');
+            renderProductSection(tvs, 'tvs-list', tvsShowAll, '');
+            document.getElementById('laptops').scrollIntoView({behavior:'smooth'});
+            scrolled = true;
+          } else if (tvWords.some(w => term.includes(w))) {
+            tvsShowAll = true;
+            mobilesShowAll = false;
+            laptopsShowAll = false;
+            document.getElementById('mobiles-toggle').textContent = 'Show All';
+            document.getElementById('laptops-toggle').textContent = 'Show All';
+            document.getElementById('tvs-toggle').textContent = 'Show Less';
+            renderProductSection(mobiles, 'mobiles-list', mobilesShowAll, '');
+            renderProductSection(laptops, 'laptops-list', laptopsShowAll, '');
+            renderProductSection(tvs, 'tvs-list', tvsShowAll, '');
+            document.getElementById('tvs').scrollIntoView({behavior:'smooth'});
+            scrolled = true;
+          }
+          if (!scrolled) {
+            // Fuzzy search for all products
+            mobilesShowAll = true;
+            laptopsShowAll = true;
+            tvsShowAll = true;
+            document.getElementById('mobiles-toggle').textContent = 'Show Less';
+            document.getElementById('laptops-toggle').textContent = 'Show Less';
+            document.getElementById('tvs-toggle').textContent = 'Show Less';
+            renderProductSection(fuzzyFilter(mobiles, term), 'mobiles-list', mobilesShowAll, '');
+            renderProductSection(fuzzyFilter(laptops, term), 'laptops-list', laptopsShowAll, '');
+            renderProductSection(fuzzyFilter(tvs, term), 'tvs-list', tvsShowAll, '');
+          }
+        });
+      }
     });
     document.addEventListener('DOMContentLoaded', function() {
       let currentBuyProduct = null;
@@ -310,6 +403,13 @@
         }
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
+        // Update cart count in header immediately
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+          cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+        }
+        // Show toast/feedback
+        showCartToast(`${product} added to cart!`);
       }
       window.addToCart = addToCart;
       function renderCart() {
@@ -553,6 +653,29 @@
       const mobileBtn = document.getElementById('theme-toggle-mobile');
       if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
     });
+
+    // Toast for cart feedback
+    function showCartToast(msg) {
+      let toast = document.getElementById('cart-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cart-toast';
+        toast.style.position = 'fixed';
+        toast.style.top = '60px';
+        toast.style.right = '30px';
+        toast.style.background = '#00e0ff';
+        toast.style.color = '#222';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '8px';
+        toast.style.zIndex = 9999;
+        toast.style.fontSize = '1.1rem';
+        toast.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 1800);
+    }
   </script>
 </body>
 

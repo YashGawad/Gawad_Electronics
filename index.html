@@ -222,10 +222,56 @@
           }
           if (matchedSection) {
             document.getElementById(matchedSection).scrollIntoView({behavior:'smooth'});
+            // Optionally show a toast or highlight
             return;
           }
-          alert('No matching product or section found!');
+          // Check visible product cards (first 3 of each section)
+          let found = false;
+          const sections = ['mobiles', 'laptops', 'tvs'];
+          for (const section of sections) {
+            const cards = document.querySelectorAll(`#${section} .pixel-product-box .card-title`);
+            for (let i = 0; i < Math.min(3, cards.length); i++) {
+              const card = cards[i];
+              if (card.textContent.toLowerCase().includes(query)) {
+                // Remove previous highlights
+                document.querySelectorAll('.search-highlight').forEach(el => el.classList.remove('search-highlight'));
+                card.classList.add('search-highlight');
+                card.scrollIntoView({behavior:'smooth', block:'center'});
+                // Show toast
+                showToast(`Found: ${card.textContent}`);
+                found = true;
+                break;
+              }
+            }
+            if (found) break;
+          }
+          if (!found) {
+            // Redirect to shop.html with search param
+            window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+          }
         });
+      }
+      // Toast function for feedback
+      function showToast(msg) {
+        let toast = document.getElementById('search-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'search-toast';
+          toast.style.position = 'fixed';
+          toast.style.top = '20px';
+          toast.style.left = '50%';
+          toast.style.transform = 'translateX(-50%)';
+          toast.style.background = '#222';
+          toast.style.color = '#fff';
+          toast.style.padding = '12px 24px';
+          toast.style.borderRadius = '8px';
+          toast.style.zIndex = 9999;
+          toast.style.fontSize = '1.1rem';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2000);
       }
       // THEME TOGGLE LOGIC
       function setTheme(theme) {
