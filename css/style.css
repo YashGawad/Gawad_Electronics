@@ -126,11 +126,28 @@ input, textarea, select {
   box-shadow: 0 4px 24px 0 #0008, 0 1.5px 8px 0 #7c2ae822;
 }
 .pixel-product-box img {
-  width: 180px;
-  height: 180px;
+  width: 90%;
+  max-width: 220px;
+  height: 220px;
+  min-height: 180px;
   object-fit: contain;
   margin: 0 auto 1rem auto;
   display: block;
+}
+@media (max-width: 767px) {
+  .pixel-product-box img {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    min-height: 140px;
+  }
+  #laptops .pixel-product-box img,
+  #tvs .pixel-product-box img {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    min-height: 140px;
+  }
 }
 .pixel-product-box .card-title {
   font-size: 1.25rem;
@@ -279,5 +296,26 @@ input, textarea, select {
     min-width: 120px;
     max-width: 90%;
     margin: 0 auto;
+  }
+}
+
+/* Make laptop and TV section images as large as mobiles on home page */
+#laptops .pixel-product-box img,
+#tvs .pixel-product-box img {
+  width: 90%;
+  max-width: 220px;
+  height: 220px;
+  min-height: 180px;
+  object-fit: contain;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+@media (max-width: 767px) {
+  #laptops .pixel-product-box img,
+  #tvs .pixel-product-box img {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    min-height: 140px;
   }
 }
